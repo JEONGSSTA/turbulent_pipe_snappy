@@ -20,7 +20,7 @@ internalField   uniform 0;
 
 boundaryField
 {
-    outlet
+    topPatch
     {
         type            fixedValue;
         value           uniform 0.0;
@@ -32,7 +32,7 @@ boundaryField
         type            zeroGradient;
     }
 
-    inlet
+    bottomPatch
     {
 	type            zeroGradient;
     }
