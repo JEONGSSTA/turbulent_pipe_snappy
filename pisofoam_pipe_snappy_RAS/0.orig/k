@@ -16,24 +16,26 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0.00375;
+internalField   uniform 3.75e-5;   //calculate k by using I, U relation
 
 boundaryField
 {
     topPatch
     {
-	    type	zeroGradient;
+	type		zeroGradient;
     }
 
     wall
     {
         type            kqRWallFunction;
-        value           uniform 0.00375;
+        value           $internalField;
     }
 
     bottomPatch
     {
-        type            zeroGradient;
+         type            turbulentIntensityKineticEnergyInlet;
+         intensity       0.05;           // 5% turbulence
+    	 value		  $internalField;
     }
 }
 
